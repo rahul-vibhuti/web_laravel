@@ -14,7 +14,7 @@
 
                     <!-- Button trigger modal -->
 
-                    <a href="{{ route('create.clients') }}" class="btn btn-primary"><i class="mdi mdi-bookmark-plus"></i>Add</a>
+                    <a href="{{ route('clients.create') }}" class="btn btn-primary"><i class="mdi mdi-bookmark-plus"></i>Add</a>
 
                 </li>
             </ul>
@@ -44,7 +44,7 @@
                                     <td>
                                         <div class="d-flex justify-content-evenly">
 
-                                            <a href="{{ route('edit.clients',$row->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="{{ route('clients.edit',$row->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                             <a onclick="deleteClient('{{ $row->id }}')" class="btn btn-danger btn-sm">Delete</a>
                                         </div>
                                     </td>
@@ -65,32 +65,13 @@
 
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
-                @if($errors->any())
-                <div class="alert alert-danger">
-                    <p><strong>Opps Something went wrong</strong></p>
-
-                    @foreach ($errors->all() as $error)
-                    <div>{{ $error }}</div>
-                    @endforeach
-
-                </div>
-                @endif
-
-                @if(session('success'))
-                <div class="alert alert-success">{{session('success')}}</div>
-                @endif
-
-                @if(session('error'))
-                <div class="alert alert-danger">{{session('error')}}</div>
-                @endif
-
                 <div class="card-body">
                     <form class="forms-sample" id="descriptionForm" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="title">Our Happy Clients Description*</label>
                             <input type="hidden" name="title" value="{{Config::get('constants.CLIENT_TITLE')}}">
-                            <textarea name="description" id="description" cols="30" rows="10">{{$metaData->value }}</textarea>
+                            <textarea name="description" id="description" cols="30" rows="10">{{ ($metaData)?$metaData->value:'' }}</textarea>
                         </div>
 
                         <div class="modal-footer d-flex justify-content-center">

@@ -61,6 +61,30 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <h4>Meta data for success stories section</h4>
+
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+            
+                <div class="card-body">
+                    <form class="forms-sample" id="descriptionForm" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="title">Success Stories Description*</label>
+                            <input type="hidden" name="title" value="{{Config::get('constants.SUCCESS_STORIES')}}">
+                            <textarea name="description" id="description" cols="30" rows="10">{{ ($metaData)?$metaData->value:'' }}</textarea>
+                        </div>
+
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary" id="addReviewBtn"><i class="mdi mdi-file-check btn-icon-prepend"></i>Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 
@@ -73,6 +97,32 @@
         $('.table').DataTable({
             "pagingType": "simple"
         });
+
+
+        $('#descriptionForm').submit((e) => {
+            e.preventDefault();
+            var myForm = document.getElementById('descriptionForm');
+            let formData = new FormData(myForm);
+            $.ajax({
+                'url': '{{ route("update.meta.desc") }}',
+                'method': 'POST',
+                'processData': false,
+                'contentType': false,
+                'data': formData,
+                success: function(result) {
+                    if (result.status == 200) {
+                        Swal.fire(result.message, "", "success");
+                    }
+
+                    if (result.status == 403) {
+                        Swal.fire(result.message, "", "warning");
+                    }
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            })
+        })
     });
 
 

@@ -41,16 +41,16 @@ Route::middleware('admin.check')->group(function () {
         Route::get('dashboard',  'index')->name('dashboard');
         Route::get('meta-data',  'metaIndex')->name('meta.index');
         
-        Route::get('our-teams',  'team')->name('our.team');
-        Route::get('create-teams',  'createTeam')->name('create.team');
-        Route::get('edit-teams/{teamId}',  'editTeam')->name('edit.team');
-        Route::post('store-teams',  'storeTeam')->name('store.team');
+        Route::get('our-teams',  'team')->name('team.index');
+        Route::get('create-teams',  'createTeam')->name('team.create');
+        Route::get('edit-teams/{teamId}',  'editTeam')->name('team.edit');
+        Route::post('store-teams',  'storeTeam')->name('team.store');
         Route::delete('team-delete',  'teamDestroy')->name('team.destroy');
 
-        Route::get('our-customers',  'customers')->name('our.clients');
-        Route::get('create-customers',  'createCustomers')->name('create.clients');
-        Route::get('edit-customers/{customerId}',  'editCustomers')->name('edit.clients');
-        Route::post('store-customers',  'storeCustomers')->name('store.clients');
+        Route::get('our-customers',  'customers')->name('clients.index');
+        Route::get('create-customers',  'createCustomers')->name('clients.create');
+        Route::get('edit-customers/{customerId}',  'editCustomers')->name('clients.edit');
+        Route::post('store-customers',  'storeCustomers')->name('clients.store');
         Route::delete('clients-delete',  'clientsDestroy')->name('clients.destroy');
 
         Route::post('update-meta-desc',  'updateMetaDescription')->name('update.meta.desc');
