@@ -11,11 +11,15 @@
         <nav aria-label="breadcrumb">
             <ul class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">
+<<<<<<< HEAD
 
                     <!-- Button trigger modal -->
 
                     <a href="{{ route('create.team') }}" class="btn btn-primary"><i class="mdi mdi-bookmark-plus"></i>Add</a>
 
+=======
+                    <a href="{{ route('team.create') }}" class="btn btn-primary"><i class="mdi mdi-bookmark-plus"></i>Add</a>
+>>>>>>> origin/master
                 </li>
             </ul>
         </nav>
@@ -51,12 +55,10 @@
                                         <label class="badge badge-success">Active</label>
                                         @endif
                                     </td>
-
-
                                     <td>
                                         <div class="d-flex justify-content-evenly">
 
-                                            <a href="{{ route('edit.team',$row->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="{{ route('team.edit',$row->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                             <a onclick="deleteTeam('{{ $row->id }}')" class="btn btn-danger btn-sm">Delete</a>
                                         </div>
                                     </td>

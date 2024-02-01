@@ -26,7 +26,7 @@ class HomeController extends Controller
 
     public function metaIndex()
     {
-        $data = null;
+        $data = metaData::pluck('value', 'meta_key')->toArray();
         return view('admin.pages.main.meta', compact('data'));
     }
 
@@ -96,7 +96,7 @@ class HomeController extends Controller
     {
         $data = Client::all();
         $metaData =  metaData::where('meta_key', Config::get('constants.CLIENT_TITLE'))->first();
-        return view('admin.pages.customers.list', compact('data','metaData'));
+        return view('admin.pages.customers.list', compact('data', 'metaData'));
     }
     /*---  Create Customers  ---*/
     public function createCustomers()
@@ -150,7 +150,6 @@ class HomeController extends Controller
     }
 
 
-
     // update meta  description 
     public function updateMetaDescription(Request $request)
     {
@@ -163,6 +162,28 @@ class HomeController extends Controller
             return response()->json(['status' => 400, 'message' => 'All Feilds are required']);
         }
 
+<<<<<<< HEAD
+=======
+        if (filled($request->type) && $request->type == 1) {  // for meta page 
+            try {
+                foreach ($request->description as $key => $value) {
+                    $metaData = metaData::where('meta_key', $key)->first();
+                    if (!$metaData) {
+                        $metaData =  new metaData();
+                    }
+                    $metaData->key = $key;
+                    $metaData->meta_key = str_replace(' ', '_', $key);
+                    $metaData->value = $value[0];
+                    $metaData->save();
+                }
+
+                return response()->json(['status' => 200, 'message' => 'Added']);
+            } catch (Exception $e) {
+                return response()->json(['status' => 400, 'message' => $e->getMessage()]);
+            }
+        }
+
+>>>>>>> origin/master
         try {
             $metaData = metaData::where('meta_key', $request->title)->first();
             if (!$metaData) {

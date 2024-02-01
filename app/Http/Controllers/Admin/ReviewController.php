@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\metaData;
 use App\Models\Review;
 use App\Traits\FileUpload;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use PhpParser\Node\Stmt\TryCatch;
 
 class ReviewController extends Controller
@@ -18,7 +20,8 @@ class ReviewController extends Controller
     public function index()
     {
         $data = Review::all();
-        return view('admin.pages.review.list', ['data' => $data]);
+        $metaData = metaData::where('meta_key', Config::get('constants.CLIENT_SAYING'))->first();
+        return view('admin.pages.review.list', ['data' => $data, 'metaData' => $metaData]);
     }
 
     /**

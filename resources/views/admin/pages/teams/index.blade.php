@@ -14,7 +14,7 @@
 
                     <!-- Button trigger modal -->
 
-                    <a href="{{ route('our.team') }}" class="btn btn-primary">View Tems</a>
+                    <a href="{{ route('team.index') }}" class="btn btn-primary">View Tems</a>
 
                 </li>
             </ul>
@@ -44,7 +44,7 @@
                 @endif
 
                 <div class="card-body">
-                    <form class="forms-sample" id="addTeamForm" method="post" action="{{ route('store.team') }}" enctype="multipart/form-data">
+                    <form class="forms-sample" id="addTeamForm" method="post" action="{{ route('team.store') }}" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="teamId" id="teamId" value="{{ ($data)?$data->id :'' }}">
                         <div class="form-group">

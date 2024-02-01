@@ -19923,3 +19923,14 @@ ul.pagination {
 select.selectbox {
     padding: 0.94rem 1.375rem !important;
 }
+
+div.dataTables_wrapper div.dataTables_filter input {
+    margin-left: 0.5em;
+    display: inline-block;
+    width: auto;
+    padding: 10px !important;
+}
+
+.tox.tox-tinymce {
+    height: 200px !important;
+}

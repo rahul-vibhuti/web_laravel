@@ -6,7 +6,11 @@
         <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white me-2">
                 <i class="mdi mdi-home"></i>
+<<<<<<< HEAD
             </span> Reviews
+=======
+            </span> Reviews / Feedbacks
+>>>>>>> origin/master
         </h3>
         <nav aria-label="breadcrumb">
             <ul class="breadcrumb">
@@ -80,32 +84,13 @@
 
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
-                @if($errors->any())
-                <div class="alert alert-danger">
-                    <p><strong>Opps Something went wrong</strong></p>
-
-                    @foreach ($errors->all() as $error)
-                    <div>{{ $error }}</div>
-                    @endforeach
-
-                </div>
-                @endif
-
-                @if(session('success'))
-                <div class="alert alert-success">{{session('success')}}</div>
-                @endif
-
-                @if(session('error'))
-                <div class="alert alert-danger">{{session('error')}}</div>
-                @endif
-
                 <div class="card-body">
                     <form class="forms-sample" id="descriptionForm" method="post">
                         @csrf
                         <div class="form-group">
-                            <label for="title">Our Happy Clients Description*</label>
-                            <input type="hidden" name="title" value="{{Config::get('constants.CLIENT_TITLE')}}">
-                            <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                            <label for="title">Clients Feedbacks / Reviews*</label>
+                            <input type="hidden" name="title" value="{{Config::get('constants.CLIENT_SAYING')}}">
+                            <textarea name="description" id="description" cols="30" rows="10">{{ ($metaData)?$metaData->value:'' }}</textarea>
                         </div>
 
                         <div class="modal-footer d-flex justify-content-center">
@@ -128,6 +113,32 @@
     $(document).ready(() => {
         $('.table').DataTable({
             "pagingType": "simple"
+        });
+
+
+        $('#descriptionForm').submit((e) => {
+            e.preventDefault();
+            var myForm = document.getElementById('descriptionForm');
+            let formData = new FormData(myForm);
+            $.ajax({
+                'url': '{{ route("update.meta.desc") }}',
+                'method': 'POST',
+                'processData': false,
+                'contentType': false,
+                'data': formData,
+                success: function(result) {
+                    if (result.status == 200) {
+                        Swal.fire(result.message, "", "success");
+                    }
+
+                    if (result.status == 403) {
+                        Swal.fire(result.message, "", "warning");
+                    }
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
         });
     });
 

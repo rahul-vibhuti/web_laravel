@@ -14,7 +14,7 @@
 
                     <!-- Button trigger modal -->
 
-                    <a href="{{ route('our.clients') }}" class="btn btn-primary">View customers</a>
+                    <a href="{{ route('clients.index') }}" class="btn btn-primary">View customers</a>
 
                 </li>
             </ul>
@@ -45,7 +45,7 @@
 
                 <div class="card-body">
 
-                    <form class="forms-sample" id="customerForm" method="post" action="{{ route('store.clients') }}" enctype="multipart/form-data">
+                    <form class="forms-sample" id="customerForm" method="post" action="{{ route('clients.store') }}" enctype="multipart/form-data">
 
 
                         @csrf

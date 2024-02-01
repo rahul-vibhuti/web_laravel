@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\metaData;
 use App\Models\successStory;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 class StoryController extends Controller
 {
@@ -15,7 +17,8 @@ class StoryController extends Controller
     public function index()
     {
         $data = successStory::all();
-        return view('admin.pages.stories.list', compact('data'));
+        $metaData = metaData::where('meta_key', Config::get('constants.SUCCESS_STORIES'))->first();
+        return view('admin.pages.stories.list', compact('data', 'metaData'));
     }
 
     /**

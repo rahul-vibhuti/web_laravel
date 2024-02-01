@@ -6,13 +6,21 @@
         <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white me-2">
                 <i class="mdi mdi-home"></i>
+<<<<<<< HEAD
             </span>  Meta 
+=======
+            </span> Meta
+>>>>>>> origin/master
         </h3>
         <nav aria-label="breadcrumb">
             <ul class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">
                     <!-- Button trigger modal -->
+<<<<<<< HEAD
                     Meta Data 
+=======
+                    Meta Data
+>>>>>>> origin/master
                 </li>
             </ul>
         </nav>
@@ -21,80 +29,25 @@
 
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
-                @if($errors->any())
-                <div class="alert alert-danger">
-                    <p><strong>Opps Something went wrong</strong></p>
-
-                    @foreach ($errors->all() as $error)
-                    <div>{{ $error }}</div>
-                    @endforeach
-
-                </div>
-                @endif
-
-                @if(session('success'))
-                <div class="alert alert-success">{{session('success')}}</div>
-                @endif
-
-                @if(session('error'))
-                <div class="alert alert-danger">{{session('error')}}</div>
-                @endif
 
                 <div class="card-body">
-
-                    <form class="forms-sample" id="reviewForm" method="post" action="{{ route('portfolios.store') }}" enctype="multipart/form-data">
-
-
+                    <form class="forms-sample" id="metaForm" method="post" action="#" enctype="multipart/form-data">
+                        <input type="hidden" name="type" value="1">
+                        <input type="hidden" name="title" value="metaPage">
                         @csrf
-                        <div class="row">
 
-                        
-                        <div class="form-group " id="skillsDiv">
-                            @if($data)
-                            <label for="image">Skills *</label>
-                            @foreach($data->skills as $skills)
-                            <div class="row d-flex justify-between mt-4" id="skillsDiv_{{$skills->id }}">
-                                <div class="col-md-10">
-                                    <input type="text" class="form-control my-input " id="skills" name="skills[]" multiple value="{{ $skills->name }}" required>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="">
-                                        <button type="button" onclick="removeFeilds('{{ $skills->id }}')" class=" btn btn-dark btn-icon-text btn-sm"><i class="mdi mdi-bookmark-remove"></i> Remove</button>
-
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-
-                            @else
-                            <div class="row d-flex justify-between">
-                                <div class="col-md-10">
-                                    <label for="image">Skills *</label>
-                                    <input type="text" class="form-control my-input " id="skills" name="skills[]" multiple value="" required>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="mt-4">
-                                        <button type="button" onclick="addMoreFeilds()" class=" btn btn-primary btn-icon-text"> <i class="mdi mdi-bookmark-plus"></i>More</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            @endif
-                        </div>
-
-                        @if($data)
-                        <div class="col-md-2">
-                            <div class="mt-4 mb-4">
-                                <button type="button" onclick="addMoreFeilds()" class=" btn btn-primary btn-icon-text"> <i class="mdi mdi-bookmark-plus"></i>More</button>
-                            </div>
-                        </div>
-                        @endif
-
-                    
                         <div class="form-group">
-                            <label for="name">Description*</label>
-                            <textarea name="description" id="description" class="form-control my-input" cols="30" rows="3" placeholder="Description">{{ ($data)?$data->description:'' }}</textarea>
+                            <label for="name">Main Title Home page*</label>
+                            <textarea name="description[{{ Config::get('constants.INDEX_PAGE_MAIN_TITLE') }}][]" class="form-control my-input description" cols="30" rows="3" placeholder="Description">{{ ($data)?$data[Config::get('constants.INDEX_PAGE_MAIN_TITLE')]:'' }}</textarea>
                         </div>
+                        <div class="form-group">
+                            <label for="name">Sub Description Home page*</label>
+                            <textarea name="description[{{ Config::get('constants.INDEX_PAGE_SUB_DESC') }}][]" class="form-control my-input description" cols="30" rows="3" placeholder="Description">{{ ($data)?$data[Config::get('constants.INDEX_PAGE_SUB_DESC')]:'' }}</textarea>
+                        </div>
+                        {{-- <div class="form-group">
+                            <label for="name">Description*</label>
+                            <textarea name="description[]" class="form-control my-input description" cols="30" rows="1" placeholder="Description">{{ ($data)?$data->description:'' }}</textarea>
+                        </div> --}}
 
                         <div class="modal-footer d-flex justify-content-center">
 
@@ -113,39 +66,43 @@
 
 
 @section('script')
-
+<script>
+    tinymce.init({
+        selector: 'textarea.description', // Replace this CSS selector to match the placeholder element for TinyMCE
+    });
+</script>
 <script>
     $(document).ready(() => {
         $('.table').DataTable({
             "pagingType": "numbers"
         });
 
-        let catForm = $('#reviewForm');
-        catForm.validate({
-            rules: {
-                description: {
-                    required: true
+
+        $('#metaForm').submit((e) => {
+            e.preventDefault();
+            var myForm = document.getElementById('metaForm');
+            let formData = new FormData(myForm);
+            $.ajax({
+                'url': '{{ route("update.meta.desc") }}',
+                'method': 'POST',
+                'processData': false,
+                'contentType': false,
+                'data': formData,
+                success: function(result) {
+                    if (result.status == 200) {
+                        Swal.fire(result.message, "", "success");
+                    }
+
+                    if (result.status == 403) {
+                        Swal.fire(result.message, "", "warning");
+                    }
                 },
-                image: {
-                    required: true
-                },
-                description: {
-                    required: true
-                },
-                title: {
-                    required: true
-                },
-                short_title: {
-                    required: true
-                },
-                short_description: {
-                    required: true
-                },
-                images: {
-                    required: true
+                error: function(err) {
+                    console.log(err);
                 }
-            }
+            });
         });
+
     });
 
 
