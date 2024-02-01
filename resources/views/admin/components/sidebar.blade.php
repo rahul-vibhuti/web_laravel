@@ -83,6 +83,12 @@
                  <i class="mdi mdi-library-plus menu-icon"></i>
              </a>
          </li>
+         <li class="nav-item {{ Str::startsWith(Route::currentRouteName(), 'queries.') ? 'active' : '' }}">
+             <a class="nav-link" href="{{ route('queries.index') }}">
+                 <span class="menu-title">Queries</span>
+                 <i class="mdi mdi-library-plus menu-icon"></i>
+             </a>
+         </li>
       
 
          <!-- <li class="nav-item sidebar-actions">

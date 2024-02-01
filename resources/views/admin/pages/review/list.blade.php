@@ -53,7 +53,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <p class="textarea">{{ mb_substr($row->description, 0 ,50 )}} </p>
+                                        <p class="textarea">{{ $row->description }} </p>
                                     </td>
 
                                     <td>

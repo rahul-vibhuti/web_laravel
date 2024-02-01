@@ -54,7 +54,7 @@
 
         });
     </script>
-    <script>
+    <script> 
         function reloadWindow() {
             window.location.reload();
 

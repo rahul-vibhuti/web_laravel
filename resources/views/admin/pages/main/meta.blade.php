@@ -18,7 +18,6 @@
         </nav>
     </div>
     <div class="row">
-
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
 
@@ -28,16 +27,50 @@
                         <input type="hidden" name="title" value="metaPage">
                         @csrf
 
+                        <h4>Social links</h4>
+                        <hr class="w-25">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="skype">Skype*</label>
+                                    <input type="text" class="form-control my-input" id="skype" name="skype" value="" placeholder="skype id" autocomplete="off" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="gmail">Gmail *</label>
+                                    <input type="text" class="form-control my-input" id="gmail" name="gmail" value="" placeholder="Gmail id" autocomplete="off" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="whatsapp">Whatsapp *</label>
+                                    <input type="text" class="form-control my-input" id="whatsapp" name="whatsapp" value="" placeholder="Whatsapp" autocomplete="off" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="instagram">Instagram *</label>
+                                    <input type="text" class="form-control my-input" id="instagram" name="instagram" value="" placeholder="Instagram" autocomplete="off" required>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+
                         <div class="form-group">
-                            <label for="name">Main Title Home page*</label>
+                            <label for="name"><strong>Main Title Home page* </strong></label>
                             <textarea name="description[{{ Config::get('constants.INDEX_PAGE_MAIN_TITLE') }}][]" class="form-control my-input description" cols="30" rows="3" placeholder="Description">
                             @isset($data[Config::get('constants.INDEX_PAGE_MAIN_TITLE')])
                             {{ $data[Config::get('constants.INDEX_PAGE_MAIN_TITLE')] }}
                             @endisset
                             </textarea>
                         </div>
+                        <br>
                         <div class="form-group">
-                            <label for="name">Sub Description Home page*</label>
+                            <strong><label for="name">Sub Description Home page*</label></strong>
                             <textarea name="description[{{ Config::get('constants.INDEX_PAGE_SUB_DESC') }}][]" class="form-control my-input description" cols="30" rows="3" placeholder="Description">
                             @isset($data[Config::get('constants.INDEX_PAGE_SUB_DESC')])
                             {{ $data[Config::get('constants.INDEX_PAGE_SUB_DESC')] }}

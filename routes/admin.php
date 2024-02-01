@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\TodoController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PortfolioController;
+use App\Http\Controllers\Admin\QueryController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\StoryController;
@@ -95,5 +96,12 @@ Route::middleware('admin.check')->group(function () {
         Route::get('portfolios-edit/{portfolioId}',  'edit')->name('portfolios.edit');
         Route::post('portfolios-store',  'store')->name('portfolios.store');
         Route::delete('portfolios-delete',  'destroy')->name('portfolios.destroy');
+    });
+    Route::controller(QueryController::class)->group(function () {
+        Route::get('queries',  'index')->name('queries.index');
+        Route::get('show-queries/{queryId}',  'show')->name('queries.show');
+
+        Route::post('queries-store',  'store')->name('queries.store');
+        Route::delete('queries-delete',  'destroy')->name('queries.destroy');
     });
 });

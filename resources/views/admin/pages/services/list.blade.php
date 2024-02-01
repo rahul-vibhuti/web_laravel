@@ -29,7 +29,7 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Title</th>                           
+                                    <th>Name</th>                           
                                     <th>Status</th>
                                     <th>Description</th>
                                     <th class="text-center">Action</th>
@@ -40,7 +40,7 @@
                                 @forelse ($data as $row)
                                 <tr>
                                     <td>{{ $row->id }}</td>
-                                    <td>{{ $row->title }}</td>
+                                    <td>{{ $row->name }}</td>
                                     <td>
                                         @if ($row->status == 0)
                                         <label class="badge badge-danger">Inactive</label>
@@ -49,7 +49,7 @@
                                         @endif
                                     </td>
                                     <td class="descriptionColumn">
-                                        <p class="para-des">{!! $row->description !!} </p>
+                                        {!! $row->description !!} 
                                     </td>
 
                                     <td>
