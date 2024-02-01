@@ -30,29 +30,37 @@
 
                         <div class="form-group">
                             <label for="name">Main Title Home page*</label>
-                            <textarea name="description[{{ Config::get('constants.INDEX_PAGE_MAIN_TITLE') }}][]" class="form-control my-input description" cols="30" rows="3" placeholder="Description">{{ ($data)?$data[Config::get('constants.INDEX_PAGE_MAIN_TITLE')]:'' }}</textarea>
+                            <textarea name="description[{{ Config::get('constants.INDEX_PAGE_MAIN_TITLE') }}][]" class="form-control my-input description" cols="30" rows="3" placeholder="Description">
+                            @isset($data[Config::get('constants.INDEX_PAGE_MAIN_TITLE')])
+                            {{ $data[Config::get('constants.INDEX_PAGE_MAIN_TITLE')] }}
+                            @endisset
+                            </textarea>
                         </div>
                         <div class="form-group">
                             <label for="name">Sub Description Home page*</label>
-                            <textarea name="description[{{ Config::get('constants.INDEX_PAGE_SUB_DESC') }}][]" class="form-control my-input description" cols="30" rows="3" placeholder="Description">{{ ($data)?$data[Config::get('constants.INDEX_PAGE_SUB_DESC')]:'' }}</textarea>
+                            <textarea name="description[{{ Config::get('constants.INDEX_PAGE_SUB_DESC') }}][]" class="form-control my-input description" cols="30" rows="3" placeholder="Description">
+                            @isset($data[Config::get('constants.INDEX_PAGE_SUB_DESC')])
+                            {{ $data[Config::get('constants.INDEX_PAGE_SUB_DESC')] }}
+                            @endisset
+                            </textarea>
                         </div>
                         {{-- <div class="form-group">
                             <label for="name">Description*</label>
                             <textarea name="description[]" class="form-control my-input description" cols="30" rows="1" placeholder="Description">{{ ($data)?$data->description:'' }}</textarea>
-                        </div> --}}
+                </div> --}}
 
-                        <div class="modal-footer d-flex justify-content-center">
+                <div class="modal-footer d-flex justify-content-center">
 
-                            <button type="submit" class="btn btn-primary" id="addReviewBtn"><i class="mdi mdi-file-check btn-icon-prepend"></i> Create</button>
-
-                        </div>
-                    </form>
+                    <button type="submit" class="btn btn-primary" id="addReviewBtn"><i class="mdi mdi-file-check btn-icon-prepend"></i> Create</button>
 
                 </div>
+                </form>
+
             </div>
         </div>
-
     </div>
+
+</div>
 </div>
 @endsection
 

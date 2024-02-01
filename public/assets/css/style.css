@@ -19934,3 +19934,18 @@ div.dataTables_wrapper div.dataTables_filter input {
 .tox.tox-tinymce {
     height: 200px !important;
 }
+
+
+td.descriptionColumn {
+    width: 50em;
+    white-space: normal !important;
+    overflow-y: scroll;
+    max-width: 43em;
+    height: 120px;
+    max-height: 231px;
+}
+
+p.para-des {
+    width: fit-content !important;
+    white-space: normal !important;
+}

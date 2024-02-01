@@ -40,7 +40,7 @@ Route::middleware('admin.check')->group(function () {
     Route::controller(HomeController::class)->group(function () {
         Route::get('dashboard',  'index')->name('dashboard');
         Route::get('meta-data',  'metaIndex')->name('meta.index');
-        
+
         Route::get('our-teams',  'team')->name('team.index');
         Route::get('create-teams',  'createTeam')->name('team.create');
         Route::get('edit-teams/{teamId}',  'editTeam')->name('team.edit');
@@ -54,7 +54,6 @@ Route::middleware('admin.check')->group(function () {
         Route::delete('clients-delete',  'clientsDestroy')->name('clients.destroy');
 
         Route::post('update-meta-desc',  'updateMetaDescription')->name('update.meta.desc');
-
     });
 
     Route::controller(TodoController::class)->group(function () {
@@ -78,7 +77,11 @@ Route::middleware('admin.check')->group(function () {
         Route::delete('reviews-delete',  'destroy')->name('reviews.destroy');
     });
     Route::controller(ServiceController::class)->group(function () {
-        Route::get('services',  'index')->name('services');
+        Route::get('services',  'index')->name('services.index');
+        Route::get('services-create',  'create')->name('services.create');
+        Route::get('services-edi/{serviceId}',  'edit')->name('services.edit');
+        Route::post('services-store',  'store')->name('services.store');
+        Route::delete('services-delete',  'destroy')->name('services.destroy');
     });
     Route::controller(StoryController::class)->group(function () {
         Route::get('stories',  'index')->name('stories.index');
