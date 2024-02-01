@@ -26,11 +26,7 @@
                  <i class="mdi mdi-home menu-icon"></i>
              </a>
          </li>
-<<<<<<< HEAD
-         <li class="nav-item {{ Route::currentRouteName() == 'categories.index' ?'active':'' }}">
-=======
          <li class="nav-item {{ Str::startsWith(Route::currentRouteName(), 'categories.') ? 'active' : '' }} {{ Str::startsWith(Route::currentRouteName(), 'subcategories.') ? 'active' : '' }}">
->>>>>>> origin/master
              <a class="nav-link " data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                  <span class="menu-title">Manage Category</span>
                  <i class="menu-arrow"></i>
@@ -64,7 +60,7 @@
          </li>
          <li class="nav-item {{ Str::startsWith(Route::currentRouteName(), 'stories.') ? 'active' : '' }}">
              <a class="nav-link" href="{{ route('stories.index') }}">
-                 <span class="menu-title">stories</span>
+                 <span class="menu-title">Success stories</span>
                  <!-- <i class="mdi mdi-chart-bar menu-icon"></i> -->
                  <i class="mdi mdi-database menu-icon"></i>
              </a>
@@ -72,13 +68,19 @@
          <li class="nav-item {{ Str::startsWith(Route::currentRouteName(), 'meta.') ? 'active' : '' }}">
              <a class="nav-link" href="{{ route('meta.index') }}">
                  <span class="menu-title">Meta Data</span>
-                 <i class="mdi mdi-table-large menu-icon"></i>
+                 <i class="mdi mdi-settings menu-icon"></i>
              </a>
          </li>
          <li class="nav-item {{ Str::startsWith(Route::currentRouteName(), 'team.') ? 'active' : '' }}">
              <a class="nav-link" href="{{ route('team.index') }}">
                  <span class="menu-title">My Team</span>
                  <i class="mdi mdi-account-multiple-outline menu-icon"></i>
+             </a>
+         </li>
+         <li class="nav-item {{ Str::startsWith(Route::currentRouteName(), 'services.') ? 'active' : '' }}">
+             <a class="nav-link" href="{{ route('services.index') }}">
+                 <span class="menu-title">Services</span>
+                 <i class="mdi mdi-library-plus menu-icon"></i>
              </a>
          </li>
       

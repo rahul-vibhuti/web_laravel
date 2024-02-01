@@ -6,12 +6,16 @@
         <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white me-2">
                 <i class="mdi mdi-home"></i>
-            </span> Teams
+            </span> Services
         </h3>
         <nav aria-label="breadcrumb">
             <ul class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">
-                    <a href="{{ route('team.create') }}" class="btn btn-primary"><i class="mdi mdi-bookmark-plus"></i>Add</a>
+
+                    <!-- Button trigger modal -->
+
+                    <a href="{{ route('services.create') }}" class="btn btn-primary"><i class="mdi mdi-bookmark-plus"></i>Add</a>
+
                 </li>
             </ul>
         </nav>
@@ -25,10 +29,9 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Image</th>
-                                    <th>User Name</th>
-                                    <th>Role</th>
+                                    <th>Title</th>                           
                                     <th>Status</th>
+                                    <th>Description</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -37,9 +40,7 @@
                                 @forelse ($data as $row)
                                 <tr>
                                     <td>{{ $row->id }}</td>
-                                    <td> <img src="{{ asset($row->image) }}" alt="" srcset=""></td>
-                                    <td>{{ $row->name }}</td>
-                                    <td>{{ $row->role }}</td>
+                                    <td>{{ $row->title }}</td>
                                     <td>
                                         @if ($row->status == 0)
                                         <label class="badge badge-danger">Inactive</label>
@@ -47,11 +48,15 @@
                                         <label class="badge badge-success">Active</label>
                                         @endif
                                     </td>
+                                    <td class="descriptionColumn">
+                                        <p class="para-des">{!! $row->description !!} </p>
+                                    </td>
+
                                     <td>
                                         <div class="d-flex justify-content-evenly">
 
-                                            <a href="{{ route('team.edit',$row->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                            <a onclick="deleteTeam('{{ $row->id }}')" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="{{ route('services.edit',$row->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                            <a onclick="deleteServices('{{ $row->id }}')" class="btn btn-danger btn-sm">Delete</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -65,6 +70,30 @@
             </div>
         </div>
     </div>
+
+    {{-- <div class="row">
+        <h4>Meta data for Our Clients section</h4>
+
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <form class="forms-sample" id="descriptionForm" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="title">Clients Feedbacks / Reviews*</label>
+                            <input type="hidden" name="title" value="{{Config::get('constants.CLIENT_SAYING')}}">
+                            <textarea name="description" id="description" cols="30" rows="10">{{ ($metaData)?$metaData->value:'' }}</textarea>
+                        </div>
+
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary" id="addReviewBtn"><i class="mdi mdi-file-check btn-icon-prepend"></i>Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div> --}}
 </div>
 
 
@@ -73,7 +102,40 @@
 
 @section('script')
 <script>
-    function deleteTeam(id) {
+    $(document).ready(() => {
+        $('.table').DataTable({
+            "pagingType": "simple"
+        });
+
+
+        $('#descriptionForm').submit((e) => {
+            e.preventDefault();
+            var myForm = document.getElementById('descriptionForm');
+            let formData = new FormData(myForm);
+            $.ajax({
+                'url': '{{ route("update.meta.desc") }}',
+                'method': 'POST',
+                'processData': false,
+                'contentType': false,
+                'data': formData,
+                success: function(result) {
+                    if (result.status == 200) {
+                        Swal.fire(result.message, "", "success");
+                    }
+
+                    if (result.status == 403) {
+                        Swal.fire(result.message, "", "warning");
+                    }
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        });
+    });
+
+
+    function deleteServices(id) {
         Swal.fire({
             title: "Do you want to delete?",
             showDenyButton: true,
@@ -84,7 +146,7 @@
             if (result.isConfirmed) {
 
                 $.ajax({
-                    url: "{{ route('team.destroy') }}",
+                    url: "{{ route('services.destroy') }}",
                     method: 'DELETE',
                     data: {
                         '_token': '{{ csrf_token() }}',

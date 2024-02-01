@@ -162,8 +162,6 @@ class HomeController extends Controller
             return response()->json(['status' => 400, 'message' => 'All Feilds are required']);
         }
 
-<<<<<<< HEAD
-=======
         if (filled($request->type) && $request->type == 1) {  // for meta page 
             try {
                 foreach ($request->description as $key => $value) {
@@ -183,7 +181,6 @@ class HomeController extends Controller
             }
         }
 
->>>>>>> origin/master
         try {
             $metaData = metaData::where('meta_key', $request->title)->first();
             if (!$metaData) {
