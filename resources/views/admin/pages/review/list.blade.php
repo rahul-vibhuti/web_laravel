@@ -52,8 +52,8 @@
                                         <label class="badge badge-success">Active</label>
                                         @endif
                                     </td>
-                                    <td>
-                                        <p class="textarea">{{ $row->description }} </p>
+                                    <td class="descriptionColumn">
+                                        <p>{{ $row->description }} </p>
                                     </td>
 
                                     <td>
