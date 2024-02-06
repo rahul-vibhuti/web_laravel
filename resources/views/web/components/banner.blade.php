@@ -7,9 +7,9 @@
                      <span>every step</span> we take
                  </h1>
                  <ul>
-                     <li>2500+ projects</li>
-                     <li>650+ Happy Clients</li>
-                     <li>$380M+ Revenue</li>
+                     <li>{{ $metaData[Config::get('constants.PROJECTS')] }}+ projects</li>
+                     <li>{{ $metaData[Config::get('constants.CLIENTS')] }}+ Happy Clients</li>
+                     <li>${{ $metaData[Config::get('constants.REVENUE')] }}+ Revenue</li>
                  </ul>
                  <div class="clutchimg d-flex">
                      <div class="link">
@@ -24,7 +24,7 @@
                      </div>
                  </div>
                  <div class="newherosectionbtn d-flex align-items-center">
-                     <a href="/request-quote">
+                     <a href="#query-section">
                          <button class="about-project">
                              Tell us about your project
                              <span class="arrows">→</span>

@@ -1,16 +1,18 @@
-   <section class="formSection">
+   <section class="formSection" id="query-section">
        <div class="container">
            <div class="innerBox">
                <div class="row formRow">
                    <div class="col-md-6">
-                       <p class="paraHeading">Let's Talk Your Business</p>
-                       <p class="commonPara">
+                       <p class="paraHeading">{!! $metaData[Config::get('constants.QUERY_TITLE')] !!}</p>
+                       <!-- <p class="commonPara">
                            <span class="d-block">Prenons contact pour échanger sur vos besoins et vos défis
                                tech.
                            </span>
                            Nous serions heureux d’en connaître un peu plus sur votre projet
                            de site, d’application ou de solution SaaS.
-                       </p>
+                       </p> -->
+
+                       {!! $metaData[Config::get('constants.QUERY_DESC')] !!}
                    </div>
                    <div class="col-md-6">
 
@@ -19,20 +21,20 @@
                                <ul class="mainlistItems">
                                    <li class="commonPara">
                                        <span><img src="{{ asset('assets/web/Images/skype.png') }}" alt="img" /></span>
-                                       Skype <strong>xyz@gmail.com</strong>
+                                       Skype <strong>{!! $metaData[Config::get('constants.SKYPE')] !!}</strong>
                                    </li>
                                    <li class="commonPara">
                                        <span><img src="{{ asset('assets/web/Images/gmail.png') }}" alt="img" /></span>
-                                       Gmail <strong>xyz@gmail.com</strong>
+                                       Gmail <strong>{!! $metaData[Config::get('constants.GMAIL')] !!}</strong>
                                    </li>
                                    <li class="commonPara">
                                        <span><img src="{{ asset('assets/web/Images/whatsapp.png') }}" alt="img" /></span>
-                                       whatsapp <strong>3678578278</strong>
+                                       whatsapp <strong>{!! $metaData[Config::get('constants.WHATSAPP')] !!}</strong>
                                    </li>
                                    <li class="commonPara">
                                        <span><img src="{{ asset('assets/web/Images/instagram.png') }}" alt="img" /></span>
                                        instagram
-                                       <strong>digital-marketing134</strong>
+                                       <strong>{!! $metaData[Config::get('constants.INSTAGRAM')] !!}</strong>
                                    </li>
                                </ul>
                            </div>
@@ -100,7 +102,7 @@
                                <div class="inquiryBtnOuter">
                                    <button type="submit" class="primary-btn hvr-shutter-out-horizontal ml-lg-auto" id="contact-submit">
                                        Send <i class="fas fa-solid fa-arrow-right"></i>
-                                        </button>
+                                   </button>
                                </div>
                            </div>
                        </div>

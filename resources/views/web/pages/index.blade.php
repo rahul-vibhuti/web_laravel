@@ -10,8 +10,9 @@
             <div class="col-lg-6">
                 <div class="common-heading text-l">
                     <h2 class="mb30" style="margin-top: -3px">
-                        <span class="text-second text-bold">Experience</span>
-                        World-class Agile Product Development
+                        <!-- <span class="text-second text-bold">Experience</span>
+                        World-class Agile Product Development -->
+                         {!! $metaData[Config::get('constants.INDEX_PAGE_SUB_TITLE')] !!}
                     </h2>
                     {!! $metaData[Config::get('constants.INDEX_PAGE_SUB_DESC')] !!}
 
@@ -20,7 +21,7 @@
                     <h3 class="mb30">Let's Start a New Project Together</h3>
                     <form class="inquire_now">
                         <div class="flex-wrap">
-                            <a class="btn large-btn move-btn" href="inquiry.html">Get A Quote</a>
+                            <a class="btn large-btn move-btn" href="#query-section">Get A Quote</a>
                         </div>
                     </form>
                 </div>
@@ -31,43 +32,43 @@
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                             <div class="funfct srcl1">
                                 <img src="{{ asset('assets/web/images/20-years.png') }}" alt="" />
-                                <span class="services-cuntr counter">12</span><span class="services-cuntr">+</span>
+                                <span class="services-cuntr counter">{{ $metaData[Config::get('constants.EXPERIENCE')] }}</span><span class="services-cuntr">+</span>
                                 <p>Years Experience</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                             <div class="funfct srcl2">
                                 <img src="{{ asset('assets/web/images/talented-squad.png') }}" alt="" />
-                                <span class="services-cuntr counter">250</span><span class="services-cuntr">+</span>
+                                <span class="services-cuntr counter">{{ $metaData[Config::get('constants.TEAM')] }}</span><span class="services-cuntr">+</span>
                                 <p>Talented Squad</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                             <div class="funfct srcl3">
                                 <img src="{{ asset('assets/web/images/apps.png') }}" alt="" />
-                                <span class="services-cuntr counter">1200</span><span class="services-cuntr">+</span>
+                                <span class="services-cuntr counter">{{ $metaData[Config::get('constants.APP_DELIVERED')] }}</span><span class="services-cuntr">+</span>
                                 <p>Apps Developed</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                             <div class="funfct srcl4">
                                 <img src="{{ asset('assets/web/images/projects--delivered.png') }}" alt="" />
-                                <span class="services-cuntr counter">100</span><span class="services-cuntr">%</span>
-                                <p>Projects Delivered</p>
+                                <span class="services-cuntr counter">{{ $metaData[Config::get('constants.PROJECTS')] }}</span><span class="services-cuntr">+</span>
+                                <p>Total Projects</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                             <div class="funfct srcl5">
                                 <img src="{{ asset('assets/web/images/120-countries.png') }}" alt="" />
-                                <span class="services-cuntr counter">50</span><span class="services-cuntr">+</span>
-                                <p>Countries Served</p>
+                                <span class="services-cuntr counter">{{ $metaData[Config::get('constants.COUNTRY_SERVED')] }}</span><span class="services-cuntr">+</span>
+                                <p>Countries </p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                             <div class="funfct srcl1">
                                 <img src="{{ asset('assets/web/images/client-satisfication.png') }}" alt="" />
-                                <span class="services-cuntr counter">100</span><span class="services-cuntr">%</span>
-                                <p>Client Satisfaction</p>
+                                <span class="services-cuntr counter">{{ $metaData[Config::get('constants.CLIENTS')] }}</span><span class="services-cuntr">+</span>
+                                <p>Happy Clients</p>
                             </div>
                         </div>
                     </div>

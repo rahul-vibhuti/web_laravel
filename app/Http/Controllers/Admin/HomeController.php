@@ -27,6 +27,7 @@ class HomeController extends Controller
     public function metaIndex()
     {
         $data = metaData::pluck('value', 'meta_key')->toArray();
+       
         return view('admin.pages.main.meta', compact('data'));
     }
 

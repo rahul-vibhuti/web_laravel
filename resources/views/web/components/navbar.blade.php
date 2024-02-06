@@ -1179,7 +1179,7 @@
                     </ul>
                     <form class="inquire_now">
                         <div class="flex-wrap">
-                            <a class="btn large-btn move-btn" href="#">Get A Quote</a>
+                            <a class="btn large-btn move-btn" href="#query-section">Get A Quote</a>
                         </div>
                     </form>
                     <!-- <div class="mob-menulinks"> <a class="menu-link" href="portfolio.html">
