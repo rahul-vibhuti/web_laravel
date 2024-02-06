@@ -14,3 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', [HomeController::class, 'index'])->name('web.index');
+
+Route::post('/store-query', [HomeController::class, 'storeQuery'])->name('query.store');

@@ -142,5 +142,51 @@
 
 @section('script')
 <script>
+    $(document).ready(() => {
+        let subcriptionForm = $('#subcription_form');
+        subcriptionForm.validate({
+            highlight: function(element, errorClass, validClass) {
+                // Add the 'invalid' class to the element when there is an error
+                $(element).addClass("invalid");
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                // Remove the 'invalid' class from the element when it becomes valid
+                $(element).removeClass("invalid");
+            }
+        });
+
+        subcriptionForm.submit((e) => {
+            e.preventDefault();
+            if ($("#subcription_form").valid()) {
+
+                $('#contact-submit').html(`<span class="loader"></span>`);
+                $.ajax({
+                    url: "{{ route('query.store') }}",
+                    method: 'POST',
+                    data: new FormData(document.getElementById('subcription_form')),
+                    processData: false,
+                    contentType: false,
+                    success: function(result) {
+                        if (result.status == 200) {
+                            Swal.fire({
+                                icon: "success",
+                                title: result.message,
+                                timer: 1500
+                            });
+                        }
+                        if (result.status == 400) {
+                            Swal.fire({
+                                icon: "warning",
+                                title: result.message,
+                                timer: 1500
+                            });
+                        }
+                        subcriptionForm[0].reset();
+                    }
+                });
+            }
+
+        });
+    });
 </script>
 @endsection

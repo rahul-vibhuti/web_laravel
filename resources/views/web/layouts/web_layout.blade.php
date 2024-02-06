@@ -1,22 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('web.components.head')
-<script>
-    // navbar
-    $(function() {
-        var header = $(".clearHeader");
-
-        $(window).scroll(function() {
-            var scroll = $(window).scrollTop();
-            if (scroll >= 50) {
-                header.addClass("affix");
-            } else {
-                header.removeClass("affix");
-            }
-        });
-    });
-</script>
-
 <body>
     @include('web.components.navbar')
 
@@ -24,6 +8,8 @@
 
     <script src="{{ asset('assets/web/Js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/web/Js/index.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"></script>
 
     <script>
         $("#happy-clients").slick({
@@ -60,7 +46,7 @@
         });
 
         $(".single-item").slick();
-    </script>a
+    </script>
 
     @yield('script')
 </body>

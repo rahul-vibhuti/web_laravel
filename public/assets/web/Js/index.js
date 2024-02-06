@@ -123,7 +123,7 @@ $(".responsive3").slick({
         },
     ],
 });
-
+ 
 // ////////////FORMSECTION
 // $(window).load(function () {
 //     $(".col-3 input").val("");

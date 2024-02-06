@@ -260,6 +260,8 @@ a:hover {
     padding: 0;
     margin-top: 20px;
 }
+
+
 /* .navbar-nav .sub-menu .sub-menu-container {
     padding: 0;
     margin-top: 20px;
@@ -499,33 +501,44 @@ header.clearHeader {
         min-width: unset;
     }
 }
+
 .navbar-nav .has-sub:hover .sub-menu {
     height: calc(100vh - 85px);
-     display: block;
-     overflow-y: auto;
- }
+    display: block;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
+}
 
-@media screen and (max-width:990px){
-    .stellarnav{
+.navbar-nav .has-sub .sub-menu::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    /* Safari and Chrome */
+}
+
+@media screen and (max-width:990px) {
+    .stellarnav {
         background: #fff;
     }
-    .stellarnav .sub-menu-navbar.column-4>li{
+    .stellarnav .sub-menu-navbar.column-4>li {
         width: 100%;
         margin: 0;
     }
-    .stellarnav>ul>li.has-sub ul.sub-menu{
+    .stellarnav>ul>li.has-sub ul.sub-menu {
         display: none;
     }
-    .stellarnav li.has-sub{
-    position: relative;
+    .stellarnav li.has-sub {
+        position: relative;
     }
-    .stellarnav li.has-sub>span:after, 
-    .stellarnav li.has-sub>a:after{
-        border:unset;
+    .stellarnav li.has-sub>span:after,
+    .stellarnav li.has-sub>a:after {
+        border: unset;
         content: '\f054';
         position: absolute;
         right: 10px;
-        top:0;
+        top: 0;
         font-weight: 900;
         font-family: "Font Awesome 6 Free";
     }
@@ -533,26 +546,46 @@ header.clearHeader {
         height: 250px;
         background: linear-gradient(170deg, #ffffff 0%, #ffefe0 50%, #fff 100%);
     }
-    .stellarnav .navbar-nav{
+    .navbar-nav .has-sub .sub-menu {
+        -ms-overflow-style: none;
+        /* Internet Explorer 10+ */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+    .navbar-nav .has-sub .sub-menu::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        /* Safari and Chrome */
+    }
+    .stellarnav .navbar-nav {
         max-height: 100vh;
         overflow-y: auto;
+        -ms-overflow-style: none;
+        /* Internet Explorer 10+ */
+        scrollbar-width: none;
+        /* Firefox */
     }
-    .stellarnav>ul>li .menu_type.under_line{
+    .stellarnav .navbar-nav::-webkit-scrollbar {
+        display: none;
+        /* Safari and Chrome */
+    }
+    .stellarnav>ul>li .menu_type.under_line {
         padding: 0 10px;
     }
-    .stellarnav>ul>li{
+    .stellarnav>ul>li {
         margin: 0;
         margin-bottom: 10px;
         padding-bottom: 10px;
         border-bottom: 1px solid #b3a8a4;
     }
-    .sub-menu .menu_container> .menu_items {
+    .sub-menu .menu_container>.menu_items {
         padding: 0;
     }
-    .sub-menu .menu_container> .menu_items .resp-submenu .row.sub-menu-navbar{
-       margin: 0 !important;
+    .sub-menu .menu_container>.menu_items .resp-submenu .row.sub-menu-navbar {
+        margin: 0 !important;
     }
 }
+
 
 /*//////////////BANNER-SECTION////////////// */
 
@@ -1048,16 +1081,18 @@ p.trustHeading::after {
     position: absolute;
 }
 
-.writtenData p.trustHeading {
+
+/* .writtenData p.trustHeading {
     color: #010631;
     font-size: 21px;
     font-weight: 700;
-}
+} */
 
-.writtenData p {
+
+/* .writtenData p {
     font-size: 18px;
     font-weight: 400;
-}
+} */
 
 
 /*-------------ServiceSection-------- */
@@ -1080,6 +1115,7 @@ p.trustHeading::after {
     margin: 0px 20px;
     align-items: center;
     border-radius: 12px;
+    height: 308px;
 }
 
 .successStories .funfct {
@@ -1117,13 +1153,17 @@ p.trustHeading::after {
 
 .storySection .successStories .trustHeading {
     color: #010631;
-    font-weight: 700 !important;
+    font-weight: 700;
     margin-bottom: 20px;
     line-height: 40px;
-    font-size: 32px !important;
+    font-size: 32px;
     position: unset;
-    width: 100% !important;
+    width: 100%;
     margin: 20px 0px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .successStories .trustHeading::after {
@@ -1139,7 +1179,7 @@ p.trustHeading::after {
     clip-path: inset(-100vw -100vw -100vw 0);
 }
 
-.storySection .slickOuter  {
+.storySection .slickOuter {
     width: 820px !important;
 }
 
@@ -1290,6 +1330,11 @@ p.trustHeading::after {
 .reviewSection .card .commonPara {
     color: #010631;
     margin: 10px 0px 0px 0px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 108px;
 }
 
 
@@ -1413,12 +1458,13 @@ input[type="text"] {
     height: 2px;
     background-color: #ff3b34;
     transition: 0.4s;
+    transform: translateX(-50%);
 }
 
-.effect-2:focus~.focus-border {
+.effect-2:focus~.focus-border,
+.effect-2:focus+.focus-border {
     width: 100%;
     transition: 0.4s;
-    left: 0;
 }
 
 .effect-3~.focus-border {
@@ -1503,6 +1549,10 @@ input[type="text"] {
     padding: 0;
     gap: 12px 10px;
     flex-wrap: wrap;
+}
+
+.servicesList .formServiceItem {
+    position: relative;
 }
 
 .cmr-label {
@@ -1594,7 +1644,8 @@ section.formSection {
 .file-upload .custom-file-input {
     width: 100% !important;
     text-align: left !important;
-    height: 40px !important;
+    position: absolute;
+    height: 100%;
 }
 
 .custom-file-input {
@@ -1612,10 +1663,6 @@ section.formSection {
 
 .file-upload .custom-file-label {
     justify-content: flex-start;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
     z-index: 1;
     height: calc(1.5em + .75rem + 2px);
     padding: .375rem .75rem;
@@ -2884,4 +2931,23 @@ section#service_help .setContainer .row .col-lg-6 h4 {
 .client-details h5,
 .client-details p {
     margin-bottom: 0;
+}
+
+@media screen and (max-width:767px) {
+    .storySection .successStories .trustHeading {
+        line-height: 30px;
+        font-size: 24px;
+        position: unset;
+    }
+    .storySection .slickOuter {
+        max-width: 100%;
+    }
+    .newherosectionbtn {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .inquiryBtn .inquiryBtnOuter,
+    .file-upload .custom-file-label {
+        position: unset;
+    }
 }
